@@ -1,0 +1,159 @@
+& Archivo de configuracion del videojuego Tetris, desarrollado por nosotros.
+
+&Parametros
+
+String nombreJuego = "Tetris clásico";
+Float version = 1.0;
+
+&Dimensiones del tablero
+Int anchoTablero = 10;
+Int altoTablero = 20;
+
+&Velocidad de caida de piezas en bloques/segundo
+Float velocidadInicial = 1.0;
+
+&Reglas para completar linea
+
+thing reglaPuntuacion = {
+    String evento = "Linea completada";
+    String accion = "Eliminar fila";
+    Int puntuacionBase = 100;
+    &Multiplicador de puntuación por multiples lineas
+    Int[] multiplicadorPorLinea = [1, 3, 5, 8];
+}
+
+&Regla para fichas explosivas
+thing reglaBombaLadrillo = {
+    String tipoPieza = "Bomba";
+    String color = "Rojo Especial"
+    Int radioDestruccion = 2;
+    Int tiempoExplosion = 5;
+}
+
+&Regla aparición aleatoria de piezas
+tHing ReglaAparicionPiezas = {
+    Bool aparicionAleatoria = True;
+    Float ProbabilidadBomba = 0.05;
+}
+
+&Regla para aumento de velocidad de niveles
+thing reglaNivelesVelocidad = {
+    Bool aumentoVelocidad = True;
+    Int puntosPorNivel = 1000;
+    Float multiplicadorVelocidad = 1.2;
+}
+
+&Regla de finalizacion de juego
+&El juego se acaba cuando una pieza no se puede colocar
+
+thing reglaFinJuego = {
+    String condicion = "piezaAlcanzaTope";
+}
+
+&Controles de juego
+
+thing controles = {
+    &Movimiento Horizontal
+    String moverIzquierda = "a";
+    String moverDerecha = "d";
+
+    &Control de caida
+    String acelerarAbajo = "s";
+    String evitarCaida = "w";
+
+    &Controles de estado del juego
+    String pausar = "p";
+    String reiniciar = "r";
+
+}
+
+&Definicion de piezas
+
+thing figuraI = {
+    String color = "cian";
+    patron = [
+        # Rotacion 0 y 180 (horizontal)
+        [ [0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0] ],
+        # Rotacion 90 y 270 (vertical)
+        [ [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0] ]
+    ]
+}
+
+thing figuraO = {
+    String color = "amarillo";
+    patron = [
+        # La pieza O no cambia al rotar
+        [ [1, 1], [1, 1] ]
+    ]
+}
+
+thing figuraT = {
+    String color = "magenta";
+    patron = [
+        # Rotacion 0
+        [ [0, 1, 0], [1, 1, 1], [0, 0, 0] ],
+        # Rotacion 90
+        [ [0, 1, 0], [0, 1, 1], [0, 1, 0] ],
+        # Rotacion 180
+        [ [0, 0, 0], [1, 1, 1], [0, 1, 0] ],
+        # Rotacion 270
+        [ [0, 1, 0], [1, 1, 0], [0, 1, 0] ]
+    ]
+}
+
+thing figuraL = {
+    String color = "naranja";
+    patron = [
+        # Rotacion 0
+        [ [0, 0, 1], [1, 1, 1], [0, 0, 0] ],
+        # Rotacion 90
+        [ [0, 1, 0], [0, 1, 0], [0, 1, 1] ],
+        # Rotacion 180
+        [ [0, 0, 0], [1, 1, 1], [1, 0, 0] ],
+        # Rotacion 270
+        [ [1, 1, 0], [0, 1, 0], [0, 1, 0] ]
+    ]
+}
+
+thing figuraJ = {
+    String color = "azul";
+    patron = [
+        # Rotacion 0
+        [ [1, 0, 0], [1, 1, 1], [0, 0, 0] ],
+        # Rotacion 90
+        [ [0, 1, 1], [0, 1, 0], [0, 1, 0] ],
+        # Rotacion 180
+        [ [0, 0, 0], [1, 1, 1], [0, 0, 1] ],
+        # Rotacion 270
+        [ [0, 1, 0], [0, 1, 0], [1, 1, 0] ]
+    ]
+}
+
+thing figuraS = {
+    String color = "verde";
+    patron = [
+        # Rotacion 0 y 180
+        [ [0, 1, 1], [1, 1, 0], [0, 0, 0] ],
+        # Rotacion 90 y 270
+        [ [0, 1, 0], [0, 1, 1], [0, 0, 1] ]
+    ]
+}
+
+thing figuraZ = {
+    String color = "rojo";
+    patron = [
+        # Rotacion 0 y 180
+        [ [1, 1, 0], [0, 1, 1], [0, 0, 0] ],
+        # Rotacion 90 y 270
+        [ [0, 0, 1], [0, 1, 1], [0, 1, 0] ]
+    ]
+}
+
+thing figura_bomba = {
+    String color = "rojo_especial";
+    patron = [
+        [ [1] ]
+    ]
+}
+
+String[] FigurasDisponibles = [figuraI, figuraO, figuraT, figuraL, figuraJ, figuraS, figuraZ, figura_bomba];

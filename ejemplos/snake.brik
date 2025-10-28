@@ -1,0 +1,61 @@
+& Archivo de configuracion del videojuego Snake, desarrollado por nosotros.
+
+&Parametros
+
+String nombreJuego = "Snake Clásico";
+Float version = 1.0;
+
+&Dimensiones del tablero
+Int anchoTablero = 25;
+Int altoTablero = 25;
+
+&Configuracion inicial de la serpiente
+
+thing serpiente = {
+    &Posicion inicial de la cabeza (coordenadas X, Y)
+    Int posXInicial = 12;
+    Int posYInicial = 12;
+    &Longitud inicial de la serpiente
+    Int longitudInicial = 3;
+    &Color por defecto de la serpiente
+    String color = "verdeBrillante";
+    &Velocidad de movimiento en bloques/segundo
+    Float velocidad = 5.0;
+}
+
+&Configuracion de la comida
+
+thing comida = {
+    &Tipo de pieza
+    String tipo = "Manzana";
+    &Color
+    String color = "rojo";
+    &Puntos que otorga al comerla
+    Int puntos = 10;
+    &Aumento de longitud de la serpiente
+    Int aumentoLongitud = 1;
+}
+
+&Reglas del juego
+
+thing reglasJuego = {
+    &El juego termina si la serpiente choca contra si misma o contra el borde
+    Bool chocarConsigoMismo = True;
+    Bool chocarConBorde = True;
+    &Tiempo en segundos que tarda en aparecer una nueva comida
+    Float tiempoNuevaComida = 5.0;
+}
+
+&Controles de juego
+
+thing controles = {
+    &Movimiento
+    String moverArriba = "w";
+    String moverAbajo = "s";
+    String moverIzquierda = "a";
+    String moverDerecha = "d";
+
+    &Controles de estado del juego
+    String pausar = "p";
+    String reiniciar = "r";
+}
