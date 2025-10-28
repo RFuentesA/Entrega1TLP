@@ -150,9 +150,6 @@ def cargar_json(ruta):
 def main():
     """Función principal del runtime"""
     if len(sys.argv) < 2:
-        print('Uso: python runtime.py <archivo.json>')
-        print('\nEjemplo:')
-        print('  python runtime.py ../ejemplos/tetris.json')
         sys.exit(1)
     
     archivo_json = sys.argv[1]

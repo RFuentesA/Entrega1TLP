@@ -1,0 +1,32 @@
+{
+  "nombreJuego": "Snake Clásico",
+  "version": 1.0,
+  "anchoTablero": 25,
+  "altoTablero": 25,
+  "serpiente": {
+    "posXInicial": 12,
+    "posYInicial": 12,
+    "longitudInicial": 3,
+    "color": "verdeBrillante",
+    "velocidad": 5.0
+  },
+  "comida": {
+    "tipo": "Manzana",
+    "color": "rojo",
+    "puntos": 10,
+    "aumentoLongitud": 1
+  },
+  "reglasJuego": {
+    "chocarConsigoMismo": true,
+    "chocarConBorde": true,
+    "tiempoNuevaComida": 5.0
+  },
+  "controles": {
+    "moverArriba": "w",
+    "moverAbajo": "s",
+    "moverIzquierda": "a",
+    "moverDerecha": "d",
+    "pausar": "p",
+    "reiniciar": "r"
+  }
+}
