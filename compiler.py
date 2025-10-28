@@ -306,9 +306,9 @@ def main():
     else:
         # Modo interactivo
         if sys.version_info[0] >= 3:
-            archivo_entrada = input('Ingresa el nombre del archivo .brik: ')
+            archivo_entrada = input('Ingresa la dirreción del archivo:  ')
         else:
-            archivo_entrada = raw_input('Ingresa el nombre del archivo .brik: ')
+            archivo_entrada = raw_input('Ingresa la dirreción del archivo:  ')
     
     # Cargar código fuente
     codigo = cargar_archivo(archivo_entrada)
