@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-Compilador BrickScript en Python
-Realiza el análisis léxico, sintáctico y genera JSON
-Compatible con Python 2.7 y Python 3.x
-"""
-
 import sys
 import re
 import json
