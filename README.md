@@ -98,5 +98,5 @@ raise NameError('Error semántico: "variable" no definido')
 
 ## Autores
 - Ricardo armando fuentes arevalo
-- jose mauricio
+- Jose Mauricio Toscano Aguas
 - luis
