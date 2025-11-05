@@ -102,6 +102,10 @@ class Juego(object):
                 print('  Izquierda: ' + controles.get('moverIzquierda', 'a'))
             if 'moverDerecha' in controles:
                 print('  Derecha: ' + controles.get('moverDerecha', 'd'))
+            if 'acelerarAbajo' in controles:
+                print('  Acelerar caida: ' + controles.get('acelerarAbajo', 's'))
+            if 'evitarCaida' in controles:
+                print('  Rotar pieza: ' + controles.get('evitarCaida', 'w'))
             if 'pausar' in controles:
                 print('  Pausar: ' + controles.get('pausar', 'p'))
             if 'reiniciar' in controles:
