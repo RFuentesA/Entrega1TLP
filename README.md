@@ -19,11 +19,13 @@ Existen 2 formas, la primera es desde la terminal del IDE con el comando
 ```bash
 python runtime.py ../ejemplos/tetris.json
 ```
-La segunda forma consiste en utilizar el script jugar.bat desde el simbolo del sistema (CMD) estando ubicado en la carpeta raiz: Entrega1TLP y escribiendo el siguiente comando pudiendo cambiar el nombre del juego o no (tetris o snake)
+La segunda forma consiste en utilizar el script jugar.bat desde el simbolo del sistema (CMD) estando ubicado en la carpeta raiz: Entrega1TLP. Simplemente ejecuta el archivo .bat y te preguntará qué juego deseas jugar:
 
 ```cmd
-jugar.bat tetris
+jugar.bat
 ```
+
+El script te presentará un menú interactivo donde podrás elegir entre Snake (opción 1) o Tetris (opción 2).
 
 # Estructura de Archivos
 
@@ -78,6 +80,24 @@ Motor básico de juego:
 - Compatible con Windows (msvcrt)
 - Compatible con Linux/Mac (termios)
 - Detección de teclas sin bloqueo
+
+## Controles de Juego
+
+### Snake
+- **W**: Mover arriba
+- **S**: Mover abajo
+- **A**: Mover izquierda
+- **D**: Mover derecha
+- **P**: Pausar
+- **R**: Reiniciar
+
+### Tetris
+- **A**: Mover pieza a la izquierda
+- **D**: Mover pieza a la derecha
+- **S**: Acelerar caída de la pieza
+- **W**: Rotar la pieza
+- **P**: Pausar
+- **R**: Reiniciar
 
 ## Manejo de Errores
 

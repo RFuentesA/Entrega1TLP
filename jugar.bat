@@ -1,26 +1,35 @@
 @echo off
-if "%1"=="" (
-    echo ========================================
-    echo Error: Debe especificar un juego
-    echo ========================================
+echo ========================================
+echo BrickScript - Selector de Juegos
+echo ========================================
+echo.
+echo Selecciona el juego que deseas jugar:
+echo.
+echo   1. Snake
+echo   2. Tetris
+echo.
+set /p opcion="Ingresa tu opcion (1 o 2): "
+
+if "%opcion%"=="1" (
+    set juego=snake
+) else if "%opcion%"=="2" (
+    set juego=tetris
+) else (
     echo.
-    echo Uso: jugar [nombre_juego]
-    echo.
-    echo Ejemplos:
-    echo   jugar tetris
-    echo   jugar snake
-    echo.
+    echo Error: Opcion invalida
+    pause
     goto :eof
 )
 
+echo.
 echo ========================================
 echo BrickScript - Compilando y ejecutando
 echo ========================================
 echo.
 
 REM Compilar el archivo .brik a .json
-echo Compilando %1.brik...
-python compiler.py ejemplos\%1.brik
+echo Compilando %juego%.brik...
+python compiler.py ejemplos\%juego%.brik
 
 if %errorlevel% neq 0 (
     echo.
@@ -30,8 +39,8 @@ if %errorlevel% neq 0 (
 )
 
 echo.
-echo Ejecutando %1.json...
+echo Ejecutando %juego%.json...
 echo.
-python runtime.py ejemplos\%1.json
+python runtime.py ejemplos\%juego%.json
 
 pause
