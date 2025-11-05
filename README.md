@@ -1,14 +1,12 @@
-# Entrega1TLP - Python
+# Entrega2TLP
 
-En este repo esta el codigo del compilador y runtime necesarios para poder ejecutar el snake o el tetris
+En este repo está el codigo del compilador y runtime necesarios para poder ejecutar los juegos Snake y Tetris.
 
-# Necesario tener python 2.7 o 3.x
+# Es necesario tener python 2.7 o 3.x
 
-para windows descargarlo desde https://www.python.org/downloads/
+# Uso de compiler.py:
 
-# Uso de compiler.py
-
-al ejecutar dicho archivo se pide ingresar la dirección del archivo.brick que será compilado
+Al ejecutar este archivo se pide ingresar la dirección del archivo.brick que será compilado
 
 Ejemplo: Ingresa la dirreción del archivo: ../ejemplos/tetris.brik
 
@@ -19,7 +17,7 @@ Existen 2 formas, la primera es desde la terminal del IDE con el comando
 ```bash
 python runtime.py ../ejemplos/tetris.json
 ```
-La segunda forma consiste en utilizar el script jugar.bat desde el simbolo del sistema (CMD) estando ubicado en la carpeta raiz: Entrega1TLP. Simplemente ejecuta el archivo .bat y te preguntará qué juego deseas jugar:
+La segunda forma consiste en utilizar el script jugar.bat desde el simbolo del sistema (CMD) estando ubicado en la carpeta raiz: Entrega2TLP. Simplemente ejecuta el archivo .bat y te preguntará qué juego deseas jugar:
 
 ```cmd
 jugar.bat
@@ -27,7 +25,7 @@ jugar.bat
 
 El script te presentará un menú interactivo donde podrás elegir entre Snake (opción 1) o Tetris (opción 2).
 
-# Estructura de Archivos
+# Estructura de Archivos:
 
 ```
 Entrega1TLP/
@@ -37,53 +35,53 @@ Entrega1TLP/
 ├── README.md      # Este archivo
 └── runtime.py     # Motor de juego básico
 ```
-# Componentes
+# Componentes:
 
 ### compiler.py
 
 Script completo que incluye:
 
-#### Clase Token
+#### Clase Token:
 Representa un token del lenguaje.
 
-#### Clase Tokenizador
+#### Clase Tokenizador:
 Realiza el análisis léxico:
 - Usa expresiones regulares para reconocer tokens
 - Elimina comentarios (# y &)
 - Detecta caracteres inesperados
 - Genera lista de tokens
 
-#### Clase Parser
+#### Clase Parser:
 Realiza el análisis sintáctico:
 - Construye el AST (diccionario de Python)
 - Maneja variables, arrays y objetos
 - Valida referencias a variables
 - Detecta errores sintácticos y semánticos
 
-#### Funciones Auxiliares
+#### Funciones Auxiliares:
 - `cargar_archivo()`: Lee archivos .brik
 - `guardar_json()`: Guarda el AST en formato JSON
 - `main()`: Función principal del compilador
 
-### runtime.py
+### runtime.py:
 
 Motor de juego simple que incluye:
 
-#### Clase Juego
+#### Clase Juego:
 Motor básico de juego:
 - Carga configuración desde JSON
 - Renderiza el grid en consola
 - Procesa input del teclado
 - Loop principal del juego
 
-#### Funciones de Input
+#### Funciones de Input:
 - Compatible con Windows (msvcrt)
 - Compatible con Linux/Mac (termios)
 - Detección de teclas sin bloqueo
 
-## Controles de Juego
+## Controles de Juego:
 
-### Snake
+### Snake:
 - **W**: Mover arriba
 - **S**: Mover abajo
 - **A**: Mover izquierda
@@ -91,7 +89,7 @@ Motor básico de juego:
 - **P**: Pausar
 - **R**: Reiniciar
 
-### Tetris
+### Tetris:
 - **A**: Mover pieza a la izquierda
 - **D**: Mover pieza a la derecha
 - **S**: Acelerar caída de la pieza
@@ -99,9 +97,9 @@ Motor básico de juego:
 - **P**: Pausar
 - **R**: Reiniciar
 
-## Manejo de Errores
+## Manejo de Errores:
 
-### Errores Léxicos
+### Errores Léxicos:
 ```python
 raise ValueError('Error léxico: Caracteres inesperados: @#$')
 ```
@@ -116,7 +114,7 @@ raise SyntaxError('Error: Se esperaba un identificador')
 raise NameError('Error semántico: "variable" no definido')
 ```
 
-## Autores
+## Autores:
 - Ricardo Armando Fuentes Arevalo
 - Jose Mauricio Toscano Aguas
 - Luis Carlos Sanchez Florez
