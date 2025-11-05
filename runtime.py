@@ -10,6 +10,7 @@ import sys
 import json
 import time
 import os
+import random
 
 # Compatibilidad Python 2/3
 if sys.version_info[0] >= 3:
@@ -35,6 +36,10 @@ except ImportError:
 
 class Juego(object):
     """Motor de juego básico para BrickScript"""
+    
+    # Constantes para puntuación de Tetris
+    TETRIS_SCORE_VALUES = [0, 100, 300, 500, 800]
+    
     def __init__(self, datos_json):
         self.datos = datos_json
         self.nombre = datos_json.get('nombreJuego', 'BrickScript Game')
@@ -132,7 +137,6 @@ class Juego(object):
     
     def generar_comida(self):
         """Genera comida en posición aleatoria"""
-        import random
         while True:
             self.comida_x = random.randint(0, self.ancho - 1)
             self.comida_y = random.randint(0, self.alto - 1)
@@ -142,8 +146,6 @@ class Juego(object):
     
     def inicializar_tetris(self):
         """Inicializa el juego Tetris"""
-        import random
-        
         # Obtener figuras disponibles del JSON
         figuras_nombres = []
         for key in self.datos.keys():
@@ -263,10 +265,13 @@ class Juego(object):
                 else:
                     self.grid[y][x] = 'o'  # Cuerpo
     
+    def tetris_obtener_patron(self):
+        """Obtiene el patrón actual de la pieza según su rotación"""
+        patrones = self.tetris_pieza_actual.get('patron', [[[]]])
+        return patrones[self.tetris_pieza_rotacion % len(patrones)]
+    
     def actualizar_tetris(self):
         """Actualiza la lógica de Tetris"""
-        import random
-        
         # Control de velocidad de caída
         tiempo_actual = time.time()
         tiempo_entre_caidas = 1.0 / self.tetris_velocidad
@@ -305,7 +310,7 @@ class Juego(object):
     
     def tetris_colision(self):
         """Verifica si la pieza actual colisiona"""
-        patron = self.tetris_pieza_actual.get('patron', [[[]]])[self.tetris_pieza_rotacion % len(self.tetris_pieza_actual.get('patron', [[[]]]))]
+        patron = self.tetris_obtener_patron()
         
         for i, fila in enumerate(patron):
             for j, celda in enumerate(fila):
@@ -325,7 +330,7 @@ class Juego(object):
     
     def tetris_fijar_pieza(self):
         """Fija la pieza actual en el grid"""
-        patron = self.tetris_pieza_actual.get('patron', [[[]]])[self.tetris_pieza_rotacion % len(self.tetris_pieza_actual.get('patron', [[[]]]))]
+        patron = self.tetris_obtener_patron()
         
         for i, fila in enumerate(patron):
             for j, celda in enumerate(fila):
@@ -356,8 +361,7 @@ class Juego(object):
         
         # Actualizar puntuación
         if lineas_eliminadas > 0:
-            puntos = [0, 100, 300, 500, 800]
-            self.puntuacion += puntos[min(lineas_eliminadas, 4)]
+            self.puntuacion += self.TETRIS_SCORE_VALUES[min(lineas_eliminadas, 4)]
     
     def actualizar_grid_tetris(self):
         """Actualiza el grid con Tetris"""
@@ -367,7 +371,7 @@ class Juego(object):
                 self.grid[i][j] = self.tetris_grid_fijo[i][j]
         
         # Dibujar pieza actual
-        patron = self.tetris_pieza_actual.get('patron', [[[]]])[self.tetris_pieza_rotacion % len(self.tetris_pieza_actual.get('patron', [[[]]]))]
+        patron = self.tetris_obtener_patron()
         
         for i, fila in enumerate(patron):
             for j, celda in enumerate(fila):
