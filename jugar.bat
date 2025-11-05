@@ -20,7 +20,7 @@ echo.
 
 REM Compilar el archivo .brik a .json
 echo Compilando %1.brik...
-python compiler.py ..\ejemplos\%1.brik
+python compiler.py ejemplos\%1.brik
 
 if %errorlevel% neq 0 (
     echo.
@@ -32,6 +32,6 @@ if %errorlevel% neq 0 (
 echo.
 echo Ejecutando %1.json...
 echo.
-python runtime.py ..\ejemplos\%1.json
+python runtime.py ejemplos\%1.json
 
 pause
